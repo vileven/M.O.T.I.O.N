@@ -1,10 +1,10 @@
-package api.controllers;
+package controllers;
 
-import api.models.User;
-import api.services.AccountService;
-import api.utils.CookieManager;
-import api.utils.GetUserInfo;
-import api.utils.SessionIdGenerator;
+import models.User;
+import services.AccountService;
+import utils.CookieManager;
+import utils.GetUserInfo;
+import utils.SessionIdGenerator;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static api.utils.CookieManager.COOKIE_AGE;
-import static api.utils.CookieManager.COOKIE_NAME;
+import static utils.CookieManager.COOKIE_AGE;
+import static utils.CookieManager.COOKIE_NAME;
 
+@SuppressWarnings("unused")
 @RestController
 @RequestMapping(path = "/sessions")
 public class SessionController {
@@ -41,8 +42,8 @@ public class SessionController {
             consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> loginUser(@RequestBody GetUserInfo requestBody, HttpServletResponse response) {
 
-        String login = requestBody.getLogin();
-        String password = requestBody.getPassword();
+        final String login = requestBody.getLogin();
+        final String password = requestBody.getPassword();
 
         // некорректный запрос
         if (login == null || password == null) {
@@ -50,12 +51,12 @@ public class SessionController {
         }
 
         // аутентификация
-        User user = accountService.authenticate(requestBody.getLogin(), requestBody.getPassword());
+        final User user = accountService.authenticate(requestBody.getLogin(), requestBody.getPassword());
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
 
-        String sessionId = (new SessionIdGenerator()).nextSessionId();
+        final String sessionId = (new SessionIdGenerator()).nextSessionId();
         CookieManager.addCookie(response, COOKIE_NAME, sessionId, COOKIE_AGE);
 
         accountService.addSession(sessionId, user);
@@ -73,8 +74,8 @@ public class SessionController {
             produces = "application/json")
     public ResponseEntity<?> logoutUser(HttpServletRequest request, HttpServletResponse response) {
 
-        String sessionId = CookieManager.getCookieValue(request, COOKIE_NAME);
-        User user = accountService.getUserBySessionId(sessionId);
+        final String sessionId = CookieManager.getCookieValue(request, COOKIE_NAME);
+        final User user = accountService.getUserBySessionId(sessionId);
 
         // если user не нашелся
         if (user == null) {
@@ -95,8 +96,8 @@ public class SessionController {
     @RequestMapping(path = "/current", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> getLoggedUser(HttpServletRequest request) {
 
-        String sessionId = CookieManager.getCookieValue(request, COOKIE_NAME);
-        User currentUser = accountService.getUserBySessionId(sessionId);
+        final String sessionId = CookieManager.getCookieValue(request, COOKIE_NAME);
+        final User currentUser = accountService.getUserBySessionId(sessionId);
 
         // если пользователь не нашелся
         if (currentUser == null) {

@@ -1,8 +1,9 @@
-package api.utils;
+package utils;
 
 import java.security.SecureRandom;
 import java.math.BigInteger;
 
+@SuppressWarnings("ALL")
 public final class SessionIdGenerator {
     private SecureRandom random = new SecureRandom();
 

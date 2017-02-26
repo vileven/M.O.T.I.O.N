@@ -1,13 +1,13 @@
-package api;
+package main;
 
-import api.services.AccountService;
+import services.AccountService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) throws Exception {
-        AccountService accountService = new AccountService();
+        final AccountService accountService = new AccountService();
         SpringApplication.run(Application.class, args);
     }
 

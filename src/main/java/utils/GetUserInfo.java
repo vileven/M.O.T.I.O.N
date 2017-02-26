@@ -1,4 +1,4 @@
-package api.utils;
+package utils;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * дисиреализация информации о пользователе из Json
  */
+@SuppressWarnings("ALL")
 public final class GetUserInfo {
     private String login = null;
     private String email = null;

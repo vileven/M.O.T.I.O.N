@@ -3,18 +3,7 @@
 .idea
 
 # macOS Finder
-.DS_Store
-
 # Logs
-logs
-*.log
-
 # Runtime data
-pids
-*.pid
-*.seed
-
 *.iml
-*.class
 /target
-/build

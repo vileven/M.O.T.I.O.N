@@ -1,14 +1,17 @@
-package api.utils;
+package utils;
+
+import org.jetbrains.annotations.Nullable;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@SuppressWarnings({"LocalCanBeFinal", "SameParameterValue", "unused"})
 public class CookieManager {
-    public final static String COOKIE_NAME = "remember_token";
-    public final static int COOKIE_AGE = 2592000;
+    public static final String COOKIE_NAME = "remember_token";
+    public static final int COOKIE_AGE = 2592000;
 
-    public static void addCookie(HttpServletResponse response, String name, String value, int maxAge) {
+    public static void addCookie(HttpServletResponse response, String name, @Nullable String value, int maxAge) {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath("/");
         cookie.setMaxAge(maxAge);
@@ -19,6 +22,7 @@ public class CookieManager {
         addCookie(response, name, null, 0);
     }
 
+    @Nullable
     public static String getCookieValue(HttpServletRequest request, String name) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {

@@ -1,13 +1,14 @@
-package api.controllers;
+package controllers;
 
-import api.services.AccountService;
-import api.utils.GetUserInfo;
-import api.models.User;
+import services.AccountService;
+import utils.GetUserInfo;
+import models.User;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@SuppressWarnings("unused")
 @RestController
 @RequestMapping(path = "user")
 public class UserController {
@@ -27,7 +28,7 @@ public class UserController {
     @RequestMapping(path = "/", method = RequestMethod.GET,
             produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> showUser(@RequestBody GetUserInfo requestBody) {
-        User user = accountService.getUserByLogin(requestBody.getLogin());
+        final User user = accountService.getUserByLogin(requestBody.getLogin());
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error-message\":\"user not found\"}");
         }
@@ -66,10 +67,5 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error-message\":\"user not found\"}");
     }
-
-
-
-
-
 
 }
