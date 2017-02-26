@@ -1,4 +1,4 @@
-package api;
+package api.utils;
 
 import java.security.SecureRandom;
 import java.math.BigInteger;

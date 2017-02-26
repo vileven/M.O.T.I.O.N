@@ -1,10 +1,8 @@
-package api;
+package api.models;
 
-import java.io.Serializable;
 import java.util.Calendar;
-import java.util.concurrent.atomic.AtomicLong;
 
-public class User implements Serializable {
+public class User {
 
     private final Long id;
     private final String login;

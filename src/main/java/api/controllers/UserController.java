@@ -1,5 +1,8 @@
-package api;
+package api.controllers;
 
+import api.services.AccountService;
+import api.utils.GetUserInfo;
+import api.models.User;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,6 @@
-package api;
+package api.services;
 
+import api.models.User;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;

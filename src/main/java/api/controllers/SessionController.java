@@ -1,11 +1,12 @@
-package api;
+package api.controllers;
 
-import org.eclipse.jetty.client.HttpRequest;
-import org.eclipse.jetty.client.HttpResponse;
-import org.eclipse.jetty.http.HttpCookie;
+import api.models.User;
+import api.services.AccountService;
+import api.utils.CookieManager;
+import api.utils.GetUserInfo;
+import api.utils.SessionIdGenerator;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.Serializable;
 
-import static api.CookieManager.COOKIE_AGE;
-import static api.CookieManager.COOKIE_NAME;
+import static api.utils.CookieManager.COOKIE_AGE;
+import static api.utils.CookieManager.COOKIE_NAME;
 
 @RestController
 @RequestMapping(path = "/sessions")
@@ -71,7 +70,7 @@ public class SessionController {
      * @return json ответ если OK, иначе <code>HTTP</code> код соответсвующей ошибки
      */
     @RequestMapping(path = "/logout", method = RequestMethod.DELETE,
-            consumes = "application/json", produces = "application/json")
+            produces = "application/json")
     public ResponseEntity<?> logoutUser(HttpServletRequest request, HttpServletResponse response) {
 
         String sessionId = CookieManager.getCookieValue(request, COOKIE_NAME);
