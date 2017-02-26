@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * дисиреализация информации о пользователе Json
+ * дисиреализация информации о пользователе из Json
  */
 public final class GetUserInfo {
     private String login = null;
