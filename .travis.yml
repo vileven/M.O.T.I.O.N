@@ -1,6 +1,8 @@
 sudo: false
 language: java
-script: mvn clean install spring-boot:repackage
+script:
+  - jdk_switcher use oraclejdk8
+  - mvn clean install spring-boot:repackage
 
 branches:
   only:
