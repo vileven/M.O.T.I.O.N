@@ -1,18 +1,15 @@
 sudo: false
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 script:
-  - mvn clean install spring-boot:repackage
-
+- mvn clean install spring-boot:repackage
 branches:
   only:
   - master
-
 deploy:
   provider: heroku
   app:
     master: motion-project
   api_key:
-    master:
-      secure: dhCOhf/YggCuBQdq1poB4jxQzi1Y89y82uFjlL/zijPqH76hVsKmNFIMe6ZnywrGUK4pJonrj9JSIbH7fFmAehHgTVA5eN10rl/kiiyAFoaq5GYH/9eR2fx6IB3L8teA2jIp3K76hPNvLOYQUIrdJzsJV7zg+V2jHaDNvu4ePSegLVB33jYTGlLdtwry50YviJdbYz67Dlzqxcw94yDwYw5btdhyrNuZ13I/FDNI0jSq1cYqn1vWJoaaUG2LI8xSDbrJrcFXwzxdM3JYIlChTUdT2qdxot/WQhQTAQ5vEBi1KUTiZqcfxoZe1pdhHGIW7WQzrvJdJw9KZcGT4ZaZOiSaEes6z8vqHUHgyX+GZyMzDkGXxhesuz1ywLvhbyiWBrSQ06vwRdrwA/iTKkIU2vdcPzNnne0qoimo0Wc1f1mDwP0izjDuirc4l/UVhuxeHxAZ/oquPddNX6GJKmADd2XSKA18MvJ3BO6+x+Go+caz8Rt1Q76jS8q7Q03/ah0y4Y3TosZCtX2dtnZ+WShqoagkrxzfqAcko4ij6dYUbs6EAMZykSdYlDxq75jyDieThcNLh2EAXOw5qJwTJtjS2YQM0K5PMPAQQxZlRWuzlA2e3pUzcmy7cDwOwglP/6bvma//+gulaiec0O2RPudZjuR3vXSi4irS21pDuzkVdQw=
+    secure: cYoatLtdO0nR1hkwUS1mIAG2AuMQCZjoLNA597JrvbCZkTDv0E3mYTEoMytyXby+9qyrsdn9T4qM/E+/uMfU88R3zMHMeI+ule8YZNSwW7pJ9oSnPtmgvTLN7JBqv5ZV/gy4sQqH3AX7hScNFcrADY3NXe3k4qAhMZL3A9eCFJLRIK3mQBDEJZPIzaO2cQHxLDdrLUGIib4LXyCJCV6OYhRlA/HY/4OcFTti9JCIOD/u1eCekEtl/GCd8Sr6VgbtbKhTItx4/qQz2/SDMDXX50PQq5X7din8uXibVSfte6oKMldSmLjBUKBRfOSCiT/8CCFy0or5cQ3ME/qDMp1npbSQbZ+ulAEEihZXzMx4YC+HJi7wMHeKo+lwoknHFtjqc9OzmUz8RDMcIoaYTf45RgDfONjQGVC3M9xYphDT0f+GvHAd4uuyt5E+Eu2qHC9gAv6OD/q8+krWgHNZ7S/v9HiCpEqmYHwi5dRcuslVKqgsY2ndXIJcEId92TmzENYapUwv0EwUge7oHq8/ln3rcUWjIkxw1XWF9BNsOXM5YifiOk2Etft2e2+51gqkWhIQmD6LspGmdvOoLS4gRpnqRk0GjcmqgpMPUUkW7COcWGzKGM7Ae2/7OHSqWRWqK2+ajmM33+i2jwWGQY9Bml4fD6G7ddCy99vzLcyHUzHyVQE=
