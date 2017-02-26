@@ -34,13 +34,12 @@ public class SessionController {
     /**
      * Залогинить пользователя
      * @param requestBody login и password из тела запроса в json
-     * @param request объект <code>HttpSession</code> сессии пользователя
+     * @param response объект <code>HttpServletResponse</code> сессии пользователя
      * @return json <code>User</code> ответ если OK, иначе <code>HTTP</code> код соответсвующей ошибки
      */
     @RequestMapping(path = "/login", method = RequestMethod.POST,
             consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> loginUser(@RequestBody GetUserInfo requestBody, HttpServletRequest request,
-                                       HttpServletResponse response) {
+    public ResponseEntity<?> loginUser(@RequestBody GetUserInfo requestBody, HttpServletResponse response) {
 
         String login = requestBody.getLogin();
         String password = requestBody.getPassword();
@@ -66,7 +65,8 @@ public class SessionController {
 
     /**
      * Разлогин
-     * @param request объект <code>HttpSession</code>
+     * @param request объект <code>HttpServletRequest</code> запрос
+     * @param response объект <code>HttpServletResponse</code> ответ
      * @return json ответ если OK, иначе <code>HTTP</code> код соответсвующей ошибки
      */
     @RequestMapping(path = "/logout", method = RequestMethod.DELETE,
@@ -89,7 +89,7 @@ public class SessionController {
 
     /**
      * Вернуть залогиненного пользователя
-     * @param request объект <code>HttpSession</code>
+     * @param request объект <code>HttpServletRequest</code>
      * @return json <code>User</code>
      */
     @RequestMapping(path = "/current", method = RequestMethod.GET, produces = "application/json")
