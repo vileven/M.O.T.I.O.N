@@ -6,13 +6,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@SuppressWarnings({"LocalCanBeFinal", "SameParameterValue", "unused"})
 public class CookieManager {
     public static final String COOKIE_NAME = "remember_token";
     public static final int COOKIE_AGE = 2592000;
 
     public static void addCookie(HttpServletResponse response, String name, @Nullable String value, int maxAge) {
-        Cookie cookie = new Cookie(name, value);
+        final Cookie cookie = new Cookie(name, value);
         cookie.setPath("/");
         cookie.setMaxAge(maxAge);
         response.addCookie(cookie);
@@ -24,7 +23,7 @@ public class CookieManager {
 
     @Nullable
     public static String getCookieValue(HttpServletRequest request, String name) {
-        Cookie[] cookies = request.getCookies();
+        final Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (name.equals(cookie.getName())) {

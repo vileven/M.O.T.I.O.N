@@ -3,11 +3,14 @@ package utils;
 import java.security.SecureRandom;
 import java.math.BigInteger;
 
-@SuppressWarnings("ALL")
+@SuppressWarnings("FieldCanBeLocal")
 public final class SessionIdGenerator {
-    private SecureRandom random = new SecureRandom();
+
+    private final SecureRandom random = new SecureRandom();
+    private final int numBits = 130;
+    private final int radix = 32;
 
     public String nextSessionId() {
-        return new BigInteger(130, random).toString(32);
+        return new BigInteger(numBits, random).toString(radix);
     }
 }

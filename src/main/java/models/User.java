@@ -2,7 +2,6 @@ package models;
 
 import java.util.Calendar;
 
-@SuppressWarnings("unused")
 public class User {
 
     private final Long id;

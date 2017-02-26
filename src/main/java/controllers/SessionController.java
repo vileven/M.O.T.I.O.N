@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import static utils.CookieManager.COOKIE_AGE;
 import static utils.CookieManager.COOKIE_NAME;
 
-@SuppressWarnings("unused")
 @RestController
 @RequestMapping(path = "/sessions")
 public class SessionController {

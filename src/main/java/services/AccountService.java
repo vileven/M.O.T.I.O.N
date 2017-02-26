@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-@SuppressWarnings("unused")
 @Service
 public class AccountService {
 
